@@ -32,6 +32,7 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     "common.apps.CommonConfig",
     "website.apps.WebsiteConfig",
+    "property.apps.PropertyConfig",
 ]
 
 THIRD_PARTY_APPS = [
