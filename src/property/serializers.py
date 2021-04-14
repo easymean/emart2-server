@@ -15,27 +15,16 @@ class CategoryViewSetSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "created_at", "updated_at"]
 
 
-class StageViewSetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Stage
-        exclude = [
-            "is_active",
-            "created_at",
-            "updated_at",
-        ]
-        read_only_fields = ["id", "created_at", "updated_at"]
-
-
 class RelationCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ["id", "name"]
+        fields = ("name",)
 
 
 class RelationStageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stage
-        fields = ["id", "name"]
+        fields = ("name",)
 
 
 
