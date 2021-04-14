@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from website.models import WebSite
+from website.models import Website
 from property.serializers import RelationCategorySerializer, RelationStageSerializer
 
 
@@ -9,15 +9,16 @@ class WebsiteViewSetSerializer(serializers.ModelSerializer):
     stage = RelationStageSerializer(read_only=True)
 
     class Meta:
-        model = WebSite
+        model = Website
         exclude = [
             "is_active",
             "created_at",
-            "updated_at"
+            "updated_at",
         ]
-        read_only_fields = ["id", "created_at", "updated_at"]
+        read_only_fields = ["id", "created_at", "updated_at", "category", "stage"]
 
     def create(self, validated_data):
         request = self.context.get("request")
-        website = WebSite.objects.create(**validated_data, )
+        website = Website.objects.create(**validated_data)
+
 

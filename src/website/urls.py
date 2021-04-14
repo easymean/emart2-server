@@ -1,9 +1,9 @@
 from django.urls import path
 
-from website import views
+from website.views import WebsiteListView
 
-app_name = "websites"
+app_name = "website"
 
 urlpatterns = [
-
+  path("", WebsiteListView.as_view())
 ]
