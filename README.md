@@ -13,8 +13,8 @@
 ``django-admin startproject [project_name] . ``
 
 ### make new app
-``cd [project_name]``
-``django-admin start app [app_name]``
+`cd [project_name]`
+`django-admin start app [app_name]`
 
 ### init project
 ``python manage.py migrate``
