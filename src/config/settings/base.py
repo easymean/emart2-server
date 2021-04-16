@@ -50,16 +50,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-## CORS SETTING
-
-CORS_ORIGIN_ALLOW_ALL = True
-
+# CORS SETTING
 CORS_ALLOW_CREDENTIALS = True
-
-CORS_ORIGIN_WHITELIST = [
-    os.environ.get("CLIENT_URL"),
-]
-
+# CORS_ALLOW_HEADERS = ('')
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -138,13 +131,13 @@ STATICFILES_DIRS = [
 # AWS_S3_CUSTOM_DOMAIN
 
 
-## REST FRAMEWORK
+# REST FRAMEWORK
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-## logging
+# logging
 
 LOGGING = {
     'version': 1,
