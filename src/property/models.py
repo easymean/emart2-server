@@ -13,6 +13,10 @@ class Category(Common):
   class Meta:
     ordering = ["order"]
 
+  def save(self, *args, **kwargs):
+    self.order = Category.objects.filter(is_active=True).count() + 1
+    super().save(*args, **kwargs)
+
 
 class Stage(Common):
   name = models.CharField(max_length=50)
@@ -22,3 +26,7 @@ class Stage(Common):
 
   class Meta:
     ordering = ["order"]
+
+  def save(self, *args, **kwargs):
+    self.order = Stage.objects.filter(is_active=True).count() + 1
+    super().save(*args, **kwargs)

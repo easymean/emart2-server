@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
         ("Status", {"fields": ("is_active", )})
     )
 
-    list_display = ("id", "name", "is_active", "description")
+    list_display = ("id", "name", "is_active", "description", "order")
 
 
 @admin.register(models.Stage)
