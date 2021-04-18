@@ -10,4 +10,4 @@ class WebsiteAdmin(admin.ModelAdmin):
         ("Detail", {"fields": ["category", "stage"]}),
     )
 
-    list_display = ("id", "is_active", "name", "dev", "stage", "created_at", "updated_at")
+    list_display = ("id", "is_active", "name", "dev", "category", "stage", "created_at", "updated_at")

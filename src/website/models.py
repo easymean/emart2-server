@@ -15,10 +15,9 @@ class Website(Common):
         "property.Stage", on_delete=models.CASCADE, related_name="websites"
     )
 
-    def __str__(self):
-        if self.dev:
-            return f'{self.category} {self.name} 개발 {self.stage}'
-        return f'{self.category} {self.name} 운영 {self.stage}'
-
     class Meta:
         ordering = ["order"]
+
+    def __str__(self):
+        return self.name
+
