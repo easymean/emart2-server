@@ -6,11 +6,11 @@ from property.serializers import RelationCategorySerializer, RelationStageSerial
 
 class WebsiteListSerializer(serializers.ModelSerializer):
     # category = serializers.CharField(source='category.name')
-    # stage = serializers.CharField(source='stage.name')
+    stage = serializers.IntegerField(source='stage.id')
 
     class Meta:
         model = Website
-        fields = ["id", "name", "dev",  "url", "freq"]
+        fields = ["id", "name", "dev",  "url", "freq", "stage"]
 
 
 

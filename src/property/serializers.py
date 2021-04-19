@@ -21,6 +21,12 @@ class RelationCategorySerializer(serializers.ModelSerializer):
         fields = ("name",)
 
 
+class StageListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Stage
+        fields = ("id", "name",)
+
+
 class RelationStageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stage

@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class StageAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Basic Info", {"fields": ("name",)}),
-        ("Status", {"fields": ("is_active", )})
+        ("Status", {"fields": ("is_active", "order")})
     )
 
-    list_display = ("id", "name", "is_active")
+    list_display = ("id", "name", "is_active", "order")

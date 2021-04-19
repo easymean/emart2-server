@@ -21,5 +21,13 @@ class WebsiteListByKeywordView(ListAPIView):
 
     def get_queryset(self):
         keyword = self.request.query_params['keyword']
-        siteList = Website.objects.filter(is_active=True, name__contains=keyword)
-        return siteList
+        site_list = Website.objects.filter(is_active=True, name__contains=keyword)
+        return site_list
+
+
+class WebsiteListByFreq(ListAPIView):
+    serializer_class = WebsiteListSerializer
+
+    def get_queryset(self):
+        site_list = Website.objects.filter(is_active=True).order_by('-freq')[:3]
+        return site_list
