@@ -10,7 +10,8 @@ CORS_ORIGIN_WHITELIST = [
     os.environ.get("CLIENT_URL"),
 ]
 
-## DATABASE SETTINGS
+# DATABASE
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
