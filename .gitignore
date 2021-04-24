@@ -2,12 +2,12 @@
 .idea
 
 ### Django ###
-*.log
-*.pot
-*.pyc
 __pycache__/
 db.sqlite3
-media
+
+# Log
+logs/
+*.log
 
 
 # Distribution / packaging
