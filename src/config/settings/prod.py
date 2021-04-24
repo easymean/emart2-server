@@ -4,7 +4,7 @@ DEBUG = False
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '54.180.162.233']
 
 CORS_ORIGIN_WHITELIST = [
     os.environ.get("CLIENT_URL"),
@@ -22,3 +22,8 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
+
+# STATIC
+
+STATIC_ROOT = BASE_DIR / 'static/'
+STATICFILES_DIRS = []

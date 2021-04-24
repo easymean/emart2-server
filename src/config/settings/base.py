@@ -110,7 +110,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    str(BASE_DIR.joinpath('front', 'build', 'static'))
+    str(BASE_DIR.joinpath('static'))
 ]
 
 # AWS S3
