@@ -1,9 +1,12 @@
 #./Dockerfile
 FROM python:3
-WORKDIR /usr/src/app
+
+RUN mkdir /srv/emart2-server
+WORKDIR /srv/emart2-server
 
 ## Install packages
 COPY requirements.txt ./
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 ## Copy all src files
