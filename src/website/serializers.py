@@ -13,4 +13,11 @@ class WebsiteListSerializer(serializers.ModelSerializer):
         fields = ["id", "name", "dev",  "url", "freq", "stage"]
 
 
+class ReadWebsiteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Website
+        fields = ["id", "name", "dev",  "url", "freq"]
+
+
 

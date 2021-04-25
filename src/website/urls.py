@@ -1,11 +1,12 @@
 from django.urls import path
 
-from website.views import WebsiteListView, WebsiteListByKeywordView, WebsiteListByFreq
+from website import views
 
 app_name = "website"
 
 urlpatterns = [
-  path("search/", WebsiteListByKeywordView.as_view()),
-  path("freq/", WebsiteListByFreq.as_view()),
-  path("", WebsiteListView.as_view()),
+  path("freq/<int:id>", views.freq_increase),
+  path("search/", views.WebsiteListByKeywordView.as_view()),
+  path("freq/", views.WebsiteListByFreq.as_view()),
+  path("", views.WebsiteListView.as_view()),
 ]
