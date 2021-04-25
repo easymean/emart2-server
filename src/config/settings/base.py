@@ -52,7 +52,18 @@ MIDDLEWARE = [
 
 # CORS SETTING
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ALLOW_HEADERS = ('')
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'localhost:3000',
+    '127.0.0.1:3000',
+]
+
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -158,7 +169,7 @@ LOGGING = {
 
         'console': {
             # only if DEBUG = True
-            'level': 'INFO',
+            'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler'
         },
