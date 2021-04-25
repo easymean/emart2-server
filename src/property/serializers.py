@@ -3,16 +3,10 @@ from rest_framework import serializers
 from property.models import Category, Stage
 
 
-class CategoryRetrieveSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ("name", "description")
-
-
-class CategoryListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ("id", "name",)
+        fields = ("id", "name", "description")
 
 
 class RelationCategorySerializer(serializers.ModelSerializer):
