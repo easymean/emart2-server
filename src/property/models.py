@@ -14,7 +14,9 @@ class Category(Common):
     ordering = ["order"]
 
   def save(self, *args, **kwargs):
-    self.order = Category.objects.filter(is_active=True).count() + 1
+    ins = Category.objects.filter(*args, **kwargs).count()
+    if ins == 0:
+      self.order = Category.objects.filter(is_active=True).count() + 1
     super().save(*args, **kwargs)
 
 
@@ -28,5 +30,7 @@ class Stage(Common):
     ordering = ["order"]
 
   def save(self, *args, **kwargs):
-    self.order = Stage.objects.filter(is_active=True).count() + 1
+    ins = Stage.objects.filter(*args, **kwargs).count()
+    if ins == 0:
+      self.order = Stage.objects.filter(is_active=True).count() + 1
     super().save(*args, **kwargs)
