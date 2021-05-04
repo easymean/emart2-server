@@ -10,6 +10,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+ROOT_DIR = BASE_DIR.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -123,6 +124,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     str(BASE_DIR.joinpath('static'))
 ]
+STATIC_ROOT = str(ROOT_DIR.joinpath('.static_root'))
 
 # AWS S3
 # AWS_ACCESS_KEY_ID
