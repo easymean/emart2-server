@@ -31,6 +31,7 @@ PROJECT_APPS = [
     "common.apps.CommonConfig",
     "website.apps.WebsiteConfig",
     "property.apps.PropertyConfig",
+    "serverAccount.apps.ServerAccountConfig",
 ]
 
 THIRD_PARTY_APPS = [
