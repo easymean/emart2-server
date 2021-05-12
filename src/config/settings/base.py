@@ -12,6 +12,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 ROOT_DIR = BASE_DIR.parent
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -85,6 +86,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.BcryptSHA256'
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
