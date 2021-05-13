@@ -12,17 +12,12 @@ class AESCipher:
     key = hashlib.sha256(settings.SECRET_KEY.encode('utf-8')).digest()
 
     def pad(self, s):
-        return  s + (self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE) * chr(self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE)
+        return s + (self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE) * chr(self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE)
 
     def unpad(self, s):
         return s[:-ord(s[len(s) - 1:])]
 
-    # def __int__(self):
-    #     self.pad = lambda s: s + (self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE) * chr(self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE)
-    #     self.unpad = lambda s: s[:-ord(s[len(s) - 1:])]
-
     def encrypt(self, raw):
-        print(self.pad(raw))
         raw = self.pad(raw).encode('utf-8')
         iv = Random.new().read(AES.block_size)
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
