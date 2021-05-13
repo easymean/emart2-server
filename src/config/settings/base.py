@@ -87,10 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-PASSWORD_HASHERS = [
-    'django.contrib.auth.BcryptSHA256'
-]
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 

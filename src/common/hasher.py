@@ -1,40 +1,46 @@
+import hashlib
 import bcrypt
 import base64
 
 from Cryptodome.Cipher import AES
 from Cryptodome import Random
-from Cryptodome.Protocol.KDF import PBKDF2
 from django.conf import settings
 
-BLOCK_SIZE = 16
 
-pad = lambda s: s + (BLOCK_SIZE - len(s) % BLOCK_SIZE) * chr(BLOCK_SIZE - len(s) * BLOCK_SIZE)
-unpad = lambda s: s[:-ord(s[len(s) - 1:])]
+class AESCipher:
+    BLOCK_SIZE = 16
+    key = hashlib.sha256(settings.SECRET_KEY.encode('utf-8')).digest()
 
+    def pad(self, s):
+        return  s + (self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE) * chr(self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE)
 
-def get_private_key(random):
-    salt = settings.SECRET_KEY
-    kdf = PBKDF2(random, salt, 64, 1000)
-    key = kdf[:32]
-    return key
+    def unpad(self, s):
+        return s[:-ord(s[len(s) - 1:])]
 
+    # def __int__(self):
+    #     self.pad = lambda s: s + (self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE) * chr(self.BLOCK_SIZE - len(s) % self.BLOCK_SIZE)
+    #     self.unpad = lambda s: s[:-ord(s[len(s) - 1:])]
 
-def encrypt(raw, random):
-    private_key = get_private_key(random)
-    raw = pad(raw).encode('utf-8')
-    iv = Random.new().read(AES.block_size)
-    cipher = AES.new(private_key, AES.MODE_CBC, iv)
-    return base64.b64encode(iv + cipher.encrypt(raw))
+    def encrypt(self, raw):
+        print(self.pad(raw))
+        raw = self.pad(raw).encode('utf-8')
+        iv = Random.new().read(AES.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return base64.b64encode(iv + cipher.encrypt(raw))
 
+    def decrypt(self, enc):
+        enc = base64.b64decode(enc)
+        iv = enc[:16]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return self.unpad(cipher.decrypt(enc[16:]))
 
-def decrypt(enc, random):
-    private_key = get_private_key(random)
+    def encrypt_str(self, raw):
+        return self.encrypt(raw).decode('utf-8')
 
-    # base64로 decode
-    enc = base64.b64decode(enc)
-    iv = enc[:16]
-    cipher = AES.new(private_key, AES.MODE_CBC, iv)
-    return unpad(cipher.decrypt(enc[16:]))
+    def decrypt_str(self, enc):
+        if type(enc) == str:
+            enc = str.encode(enc)
+        return self.decrypt(enc).decode('utf-8')
 
 
 # 비밀번호를 암호화합니다.
