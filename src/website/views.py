@@ -1,8 +1,6 @@
-from django.views.decorators.csrf import csrf_protect
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 
 from property.models import Category

@@ -1,11 +1,11 @@
 from django.urls import path
 
-from property.views import CategoryListView, CategoryRetrieveView, StageListView
+from serverAccount import views
 
 app_name = "serverAccount"
 
+account_list = views.AccountListViewSet.as_view({"get": "list"})
+
 urlpatterns = [
-  path("stage/", StageListView.as_view()),
-  path("<int:id>", CategoryRetrieveView.as_view()),
-  path("", CategoryListView.as_view()),
+  path("", account_list),
 ]
